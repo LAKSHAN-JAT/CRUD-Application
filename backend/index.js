@@ -25,7 +25,25 @@ db.connect((err) => {
     console.log('Database connected');
 });
 
+//get all data
 
+app.get('/user', (req, res) => {
+
+    let qry = 'select * from user';
+
+    db.query(qry, (err, result) => {
+        if (err) {
+            console.log(errs, 'errs');
+        }
+
+        if (result.length > 0) {
+            res.send({
+                status: 'all user data',
+                data: result
+            });
+        }
+    });
+});
 
 
 
